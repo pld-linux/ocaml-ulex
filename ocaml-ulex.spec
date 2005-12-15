@@ -12,10 +12,10 @@ BuildRequires:	ocaml-findlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-ulex is a lexer generator for Unicode and OCaml 
+ulex is a lexer generator for Unicode and OCaml.
 
 %description -l pl
-ulex jest lexerem dla OCamla i Unicode
+ulex jest lexerem dla OCamla i Unicode.
 
 %prep
 %setup -q -n ulex-%{version}
