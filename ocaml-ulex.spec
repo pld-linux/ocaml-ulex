@@ -1,5 +1,5 @@
 Summary:	Lexer generator for Unicode and OCaml
-Summary(pl):	Lexer dla OCamla i Unicode
+Summary(pl.UTF-8):   Lexer dla OCamla i Unicode
 Name:		ocaml-ulex
 Version:	0.8
 Release:	2
@@ -14,7 +14,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 ulex is a lexer generator for Unicode and OCaml.
 
-%description -l pl
+%description -l pl.UTF-8
 ulex jest lexerem dla OCamla i Unicode.
 
 %prep
