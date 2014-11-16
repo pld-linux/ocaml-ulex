@@ -2,13 +2,14 @@ Summary:	Lexer generator for Unicode and OCaml
 Summary(pl.UTF-8):	Lexer dla OCamla i Unicode
 Name:		ocaml-ulex
 Version:	1.1
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Tools
 Source0:	http://www.cduce.org/download/ulex-%{version}.tar.gz
 # Source0-md5:	ce49a013bc4a0e085977a9fe157017bf
 BuildRequires:	ocaml >= 3.09.0
 BuildRequires:	ocaml-findlib-devel
+%requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -21,7 +22,7 @@ ulex jest lexerem dla OCamla i Unicode.
 %setup -q -n ulex-%{version}
 
 %build
-%{__make}
+%{__make} -j1 all all.opt \
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -30,10 +31,13 @@ install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/ulex
 %{__make} install \
 	OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
 
-echo 'directory = "+ulex"' \
-	>> $RPM_BUILD_ROOT%{_libdir}/ocaml/ulex/META
-mv -f $RPM_BUILD_ROOT%{_libdir}/ocaml/ulex/META \
-	$RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/ulex/META
+# move to dir pld ocamlfind looks
+install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/ulex
+mv $RPM_BUILD_ROOT%{_libdir}/ocaml/ulex/META \
+	$RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/ulex
+cat <<EOF >> $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/ulex/META
+directory="+ulex"
+EOF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -43,4 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README
 %dir %{_libdir}/ocaml/ulex
 %{_libdir}/ocaml/ulex/*.cm*
+%{_libdir}/ocaml/ulex/ulexing.a
+%{_libdir}/ocaml/ulex/ulexing.mli
+%{_libdir}/ocaml/ulex/utf8.mli
 %{_libdir}/ocaml/site-lib/ulex
