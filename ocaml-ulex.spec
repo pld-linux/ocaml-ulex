@@ -11,7 +11,7 @@ Summary:	Lexer generator for Unicode and OCaml
 Summary(pl.UTF-8):	Lexer dla OCamla i Unicode
 Name:		ocaml-ulex
 Version:	1.1
-Release:	4
+Release:	5
 License:	MIT
 Group:		Development/Tools
 Source0:	http://www.cduce.org/download/ulex-%{version}.tar.gz
