@@ -23,6 +23,8 @@ BuildRequires:	ocaml-findlib-devel
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		debug_package	%{nil}
+
 %description
 ulex is a lexer generator for Unicode and OCaml.
 
