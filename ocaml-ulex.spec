@@ -33,7 +33,7 @@ ulex jest lexerem dla OCamla i Unicode.
 
 %prep
 %setup -q -n ulex-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__make} -j1 all %{?with_ocaml_opt:all.opt}
